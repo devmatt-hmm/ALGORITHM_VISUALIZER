@@ -1,0 +1,209 @@
+{
+  "name": "algo-visualizer",
+  "displayName": "Algorithm Visualizer",
+  "description": "Watch sorting, searching, linked lists, stacks, queues, recursion, trees and graphs run step by step, or trace your own Python code.",
+  "version": "0.5.0",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Visualization",
+    "Education",
+    "Other"
+  ],
+  "keywords": [
+    "algorithm",
+    "sorting",
+    "searching",
+    "visualize",
+    "bubble sort",
+    "binary search",
+    "linked list",
+    "stack",
+    "queue",
+    "data structures",
+    "recursion",
+    "call tree",
+    "fibonacci",
+    "hanoi",
+    "tree",
+    "binary search tree",
+    "AVL",
+    "heap",
+    "graph",
+    "BFS",
+    "DFS",
+    "Dijkstra"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "The built-in demos work everywhere. Tracing your own function runs your code, so it is disabled in untrusted workspaces."
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "algoVisualizer.open",
+        "title": "Open",
+        "category": "Algorithm Visualizer"
+      },
+      {
+        "command": "algoVisualizer.visualizeFunction",
+        "title": "Visualize My Python Function",
+        "category": "Algorithm Visualizer"
+      },
+      {
+        "command": "algoVisualizer.openStructures",
+        "title": "Open Data Structures",
+        "category": "Algorithm Visualizer"
+      },
+      {
+        "command": "algoVisualizer.visualizeStructures",
+        "title": "Visualize My Linked List / Stack / Queue Code",
+        "category": "Algorithm Visualizer"
+      },
+      {
+        "command": "algoVisualizer.openRecursion",
+        "title": "Open Recursion",
+        "category": "Algorithm Visualizer"
+      },
+      {
+        "command": "algoVisualizer.visualizeRecursion",
+        "title": "Visualize My Recursive Python Function",
+        "category": "Algorithm Visualizer"
+      },
+      {
+        "command": "algoVisualizer.openTrees",
+        "title": "Open Trees",
+        "category": "Algorithm Visualizer"
+      },
+      {
+        "command": "algoVisualizer.visualizeTree",
+        "title": "Visualize My Tree Code",
+        "category": "Algorithm Visualizer"
+      },
+      {
+        "command": "algoVisualizer.openGraphs",
+        "title": "Open Graphs",
+        "category": "Algorithm Visualizer"
+      },
+      {
+        "command": "algoVisualizer.visualizeGraph",
+        "title": "Visualize My Graph Function",
+        "category": "Algorithm Visualizer"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "algoVisualizer.visualizeFunction",
+          "when": "editorLangId == python",
+          "group": "navigation@98"
+        },
+        {
+          "command": "algoVisualizer.visualizeStructures",
+          "when": "editorLangId == python",
+          "group": "navigation@97"
+        },
+        {
+          "command": "algoVisualizer.visualizeRecursion",
+          "when": "editorLangId == python",
+          "group": "navigation@96"
+        },
+        {
+          "command": "algoVisualizer.visualizeTree",
+          "when": "editorLangId == python",
+          "group": "navigation@95"
+        },
+        {
+          "command": "algoVisualizer.visualizeGraph",
+          "when": "editorLangId == python",
+          "group": "navigation@94"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "algoVisualizer.visualizeFunction",
+        "key": "ctrl+alt+a",
+        "mac": "cmd+alt+a",
+        "when": "editorTextFocus && editorLangId == python"
+      },
+      {
+        "command": "algoVisualizer.visualizeStructures",
+        "key": "ctrl+alt+d",
+        "mac": "cmd+alt+d",
+        "when": "editorTextFocus && editorLangId == python"
+      },
+      {
+        "command": "algoVisualizer.visualizeRecursion",
+        "key": "ctrl+alt+r",
+        "mac": "cmd+alt+r",
+        "when": "editorTextFocus && editorLangId == python"
+      },
+      {
+        "command": "algoVisualizer.visualizeTree",
+        "key": "ctrl+alt+t",
+        "mac": "cmd+alt+t",
+        "when": "editorTextFocus && editorLangId == python"
+      },
+      {
+        "command": "algoVisualizer.visualizeGraph",
+        "key": "ctrl+alt+g",
+        "mac": "cmd+alt+g",
+        "when": "editorTextFocus && editorLangId == python"
+      }
+    ],
+    "configuration": {
+      "title": "Algorithm Visualizer",
+      "properties": {
+        "algoVisualizer.pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Python 3.8+ executable used to trace your function. Leave empty to auto-detect."
+        },
+        "algoVisualizer.defaultArray": {
+          "type": "string",
+          "default": "5, 2, 9, 1, 7, 3, 8",
+          "description": "Suggested array when tracing your function."
+        },
+        "algoVisualizer.maxEvents": {
+          "type": "number",
+          "default": 5000,
+          "minimum": 100,
+          "maximum": 50000,
+          "description": "Stop recording after this many compares/writes (protects against infinite loops)."
+        },
+        "algoVisualizer.timeoutSeconds": {
+          "type": "number",
+          "default": 10,
+          "minimum": 2,
+          "maximum": 120,
+          "description": "Stop your function if it runs longer than this."
+        },
+        "algoVisualizer.maxSnapshots": {
+          "type": "number",
+          "default": 400,
+          "minimum": 50,
+          "maximum": 3000,
+          "description": "Stop recording your linked-structure code after this many steps (protects against infinite loops)."
+        },
+        "algoVisualizer.maxCalls": {
+          "type": "number",
+          "default": 300,
+          "minimum": 20,
+          "maximum": 2000,
+          "description": "Stop recording your recursive function after this many calls (protects against infinite recursion)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node test/smoke.js && node test/structs.test.js && node test/ds.test.js && node test/recur.test.js && node test/rec.test.js && node test/trees.test.js && node test/tree.trace.test.js && node test/graphs.test.js && node test/graph.trace.test.js"
+  }
+}
