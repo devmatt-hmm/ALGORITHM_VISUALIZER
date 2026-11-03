@@ -7,3 +7,8 @@ Check for your self:
 -choose install from VSIX and choose the algo-visualizer-0.5.0.vsix
 -read the overview and write some algorithms
 -I know you will like it..
+
+
+
+
+NOTE: for simple projects only not for large projects, this visualizes like printing 1-10 numbers using for loop not loops that needs character inputs or something, same concept for the other algorithms!
